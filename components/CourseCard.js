@@ -103,7 +103,7 @@ export default function CourseCard({ course, index = 0 }) {
       className="group relative bg-[#111318] border border-gray-800/60 rounded-2xl p-6 flex flex-col justify-between min-h-[190px] cursor-pointer overflow-hidden transform-gpu"
     >
       {/* Hover Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 via-purple-500/0 to-transparent group-hover:from-indigo-600/10 group-hover:via-purple-600/5 transition-all duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-br from-indigo-500/0 via-purple-500/0 to-transparent group-hover:from-indigo-600/10 group-hover:via-purple-600/5 transition-all duration-500 pointer-events-none" />
 
       {/* Border Glow */}
       <div className="absolute -inset-px rounded-2xl border border-transparent group-hover:border-indigo-500/20 transition-all duration-300 pointer-events-none" />
@@ -136,7 +136,7 @@ export default function CourseCard({ course, index = 0 }) {
 
         <div className="w-full bg-gray-800/50 h-2 rounded-full overflow-hidden border border-gray-700/20">
           <motion.div
-            className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full"
+            className="h-full bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full"
             initial={{ width: 0 }}
             animate={{
               width: `${course.progress || 0}%`,
