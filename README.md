@@ -1,36 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Learning Dashboard
 
-## Getting Started
+A modern learning dashboard built with Next.js 15, Tailwind CSS, Framer Motion, Lucide React, and Supabase.
 
-First, run the development server:
+## Architectural Choices
+
+I chose Next.js 15 because it provides a clear separation between Server Components and Client Components, allowing data fetching to happen on the server while keeping interactive UI elements on the client. This improves performance and reduces unnecessary client-side JavaScript.
+
+The application is organized into reusable UI components:
+
+* `Sidebar` – Navigation and dashboard links
+* `HeroCard` – Welcome section and learning statistics
+* `CourseCard` – Dynamic course tiles with progress tracking
+* `ActivityHeatmap` – Learning activity visualization
+* `supabase.js` – Centralized database configuration
+
+This structure keeps the code modular, maintainable, and easy to scale.
+
+## Server / Client Component Split
+
+### Server Components
+
+The main dashboard page (`app/page.js`) is implemented as a Server Component.
+
+Responsibilities:
+
+* Fetch course data from Supabase
+* Handle server-side rendering
+* Pass data to child components as props
+
+Benefits:
+
+* Faster initial page load
+* Reduced client-side data fetching
+* Improved performance and SEO
+
+### Client Components
+
+The following components are Client Components:
+
+* `Sidebar`
+* `HeroCard`
+* `CourseCard`
+* `ActivityHeatmap`
+
+These components use:
+
+* Framer Motion animations
+* Hover interactions
+* Dynamic progress animations
+* Interactive UI behavior
+
+Since these features require browser APIs and client-side rendering, they are marked with:
+
+```javascript
+"use client";
+```
+
+## Database Integration
+
+Supabase is used as the backend database.
+
+The dashboard fetches course information dynamically from the `courses` table, including:
+
+* Course title
+* Progress percentage
+* Icon name
+
+Lucide React icons are rendered dynamically based on the `icon_name` field stored in Supabase.
+
+## Challenges Faced
+
+### 1. Supabase Environment Configuration
+
+Initially, the application failed to connect to Supabase due to missing environment variables.
+
+Solution:
+
+* Configured `.env.local`
+* Added Supabase URL and anonymous API key
+* Restarted the Next.js development server
+
+### 2. Hydration Errors
+
+Hydration mismatches occurred because random values were generated during rendering.
+
+Solution:
+
+* Removed runtime random generation from components
+* Replaced with static mock data for the activity heatmap
+
+### 3. Dynamic Icon Rendering
+
+Mapping icon names stored in the database to Lucide React components required dynamic lookup.
+
+Solution:
+
+* Used dynamic icon resolution through Lucide React exports
+* Added fallback handling for invalid icon names
+
+### 4. Responsive Bento Layout
+
+Creating a dashboard that worked across different screen sizes required careful grid design.
+
+Solution:
+
+* Implemented responsive Tailwind CSS grid layouts
+* Used reusable card components for consistency
+
+## Technologies Used
+
+* Next.js 15
+* React
+* Tailwind CSS
+* Framer Motion
+* Supabase
+* Lucide React
+
+## Running the Project
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create `.env.local`:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Author
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Developed as part of a Frontend Internship Assignment demonstrating responsive UI design, modern React architecture, animation techniques, and database integration using Supabase.
