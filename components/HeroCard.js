@@ -7,13 +7,8 @@ export default function HeroCard() {
     <motion.section
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
-      className="col-span-12 lg:col-span-8
-      rounded-3xl p-8
-      bg-linear-to-br
-      from-violet-600/20
-      via-fuchsia-500/10
-      to-cyan-500/20
-      border border-white/10"
+      transition={{ duration: 0.5 }}
+      className="col-span-12 lg:col-span-8 rounded-3xl p-8 bg-linear-to-br from-violet-600/20 via-fuchsia-500/10 to-cyan-500/20 border border-white/10"
     >
       <h2 className="text-4xl font-bold text-white">
         Welcome Back 👋
