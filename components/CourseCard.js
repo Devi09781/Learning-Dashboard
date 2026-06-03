@@ -92,4 +92,5 @@ export default function CourseCard({ course, index = 0 }) {
       </div>
     </motion.article>
   );
-}
+} 
+
