@@ -143,6 +143,14 @@ Open:
 http://localhost:3000
 ```
 
+## Dashboard Preview
+<img width="1910" height="910" alt="Screenshot 2026-06-03 182414" src="https://github.com/user-attachments/assets/88207475-0e8a-408b-9081-27d471aa4182" />
+
+
+## Live Demo
+https://learning-dashboard-mju8gyoqi-devi09781s-projects.vercel.app/
+
+
 ## Author
 
 Developed as part of a Frontend Internship Assignment demonstrating responsive UI design, modern React architecture, animation techniques, and database integration using Supabase.
